@@ -32,6 +32,8 @@ MASKSITES: 0.02
 #Threshold for high support (not needed in --noconverge option)
 SUPPORT_THRESHOLD: 0.95
 #Number of instances to run in parallel
-NUM_INSTANCES: 4
+NUM_INSTANCES: 8
 #Scoring matrix (used in deep mode)
 SCORES: "HOXD55.q"
+# Group file
+GROUP_CSV: "group_file.csv"
