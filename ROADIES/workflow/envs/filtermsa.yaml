@@ -1,0 +1,6 @@
+name: filtermsa
+channels:
+  - bioconda
+dependencies:
+  - python=3.9
+  - dendropy=4.5.2

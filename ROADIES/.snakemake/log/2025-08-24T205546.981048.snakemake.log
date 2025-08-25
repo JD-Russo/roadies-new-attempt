@@ -1,0 +1,348 @@
+Config file config/config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 48
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+filtermsa            250
+lastz                 11
+lastz2fasta            1
+mergeTrees             1
+pasta                250
+raxmlng              250
+sequence_merge         1
+sequence_select       11
+total                776
+
+Select jobs to execute...
+
+[Sun Aug 24 20:55:47 2025]
+rule sequence_select:
+    input: /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/dp4.fa.gz
+    output: output_files/samples/dp4_temp.fa
+    jobid: 8
+    benchmark: output_files/benchmarks/dp4.sample.txt
+    reason: Missing output files: output_files/samples/dp4_temp.fa
+    wildcards: sample=dp4
+    threads: 12
+    resources: tmpdir=/tmp
+
+
+[Sun Aug 24 20:55:48 2025]
+rule sequence_select:
+    input: /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droGri2.fa.gz
+    output: output_files/samples/droGri2_temp.fa
+    jobid: 9
+    benchmark: output_files/benchmarks/droGri2.sample.txt
+    reason: Missing output files: output_files/samples/droGri2_temp.fa; Params have changed since last execution
+    wildcards: sample=droGri2
+    threads: 12
+    resources: tmpdir=/tmp
+
+
+[Sun Aug 24 20:55:48 2025]
+rule sequence_select:
+    input: /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droYak2.fa.gz
+    output: output_files/samples/droYak2_temp.fa
+    jobid: 18
+    benchmark: output_files/benchmarks/droYak2.sample.txt
+    reason: Missing output files: output_files/samples/droYak2_temp.fa; Params have changed since last execution
+    wildcards: sample=droYak2
+    threads: 12
+    resources: tmpdir=/tmp
+
+
+[Sun Aug 24 20:55:48 2025]
+rule sequence_select:
+    input: /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droEre2.fa.gz
+    output: output_files/samples/droEre2_temp.fa
+    jobid: 11
+    benchmark: output_files/benchmarks/droEre2.sample.txt
+    reason: Missing output files: output_files/samples/droEre2_temp.fa; Params have changed since last execution
+    wildcards: sample=droEre2
+    threads: 12
+    resources: tmpdir=/tmp
+
+[Sun Aug 24 20:55:49 2025]
+Finished job 11.
+1 of 776 steps (0.1%) done
+Select jobs to execute...
+
+[Sun Aug 24 20:55:49 2025]
+rule sequence_select:
+    input: /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droPer1.fa.gz
+    output: output_files/samples/droPer1_temp.fa
+    jobid: 16
+    benchmark: output_files/benchmarks/droPer1.sample.txt
+    reason: Missing output files: output_files/samples/droPer1_temp.fa; Params have changed since last execution
+    wildcards: sample=droPer1
+    threads: 12
+    resources: tmpdir=/tmp
+
+[Sun Aug 24 20:55:49 2025]
+Finished job 8.
+2 of 776 steps (0.3%) done
+Select jobs to execute...
+
+[Sun Aug 24 20:55:49 2025]
+rule sequence_select:
+    input: /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droSec1.fa.gz
+    output: output_files/samples/droSec1_temp.fa
+    jobid: 14
+    benchmark: output_files/benchmarks/droSec1.sample.txt
+    reason: Missing output files: output_files/samples/droSec1_temp.fa; Params have changed since last execution
+    wildcards: sample=droSec1
+    threads: 12
+    resources: tmpdir=/tmp
+
+[Sun Aug 24 20:55:49 2025]
+Finished job 18.
+3 of 776 steps (0.4%) done
+Select jobs to execute...
+
+[Sun Aug 24 20:55:49 2025]
+rule sequence_select:
+    input: /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droWil1.fa.gz
+    output: output_files/samples/droWil1_temp.fa
+    jobid: 12
+    benchmark: output_files/benchmarks/droWil1.sample.txt
+    reason: Missing output files: output_files/samples/droWil1_temp.fa; Params have changed since last execution
+    wildcards: sample=droWil1
+    threads: 12
+    resources: tmpdir=/tmp
+
+[Sun Aug 24 20:55:49 2025]
+Finished job 9.
+4 of 776 steps (1%) done
+Select jobs to execute...
+
+[Sun Aug 24 20:55:49 2025]
+rule sequence_select:
+    input: /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droSim1.fa.gz
+    output: output_files/samples/droSim1_temp.fa
+    jobid: 10
+    benchmark: output_files/benchmarks/droSim1.sample.txt
+    reason: Missing output files: output_files/samples/droSim1_temp.fa; Params have changed since last execution
+    wildcards: sample=droSim1
+    threads: 12
+    resources: tmpdir=/tmp
+
+[Sun Aug 24 20:55:49 2025]
+Finished job 10.
+5 of 776 steps (1%) done
+Select jobs to execute...
+
+[Sun Aug 24 20:55:49 2025]
+rule sequence_select:
+    input: /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droAna2.fa.gz
+    output: output_files/samples/droAna2_temp.fa
+    jobid: 17
+    benchmark: output_files/benchmarks/droAna2.sample.txt
+    reason: Missing output files: output_files/samples/droAna2_temp.fa; Params have changed since last execution
+    wildcards: sample=droAna2
+    threads: 12
+    resources: tmpdir=/tmp
+
+[Sun Aug 24 20:55:50 2025]
+Finished job 14.
+6 of 776 steps (1%) done
+Select jobs to execute...
+
+[Sun Aug 24 20:55:50 2025]
+rule sequence_select:
+    input: /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droMoj3.fa.gz
+    output: output_files/samples/droMoj3_temp.fa
+    jobid: 13
+    benchmark: output_files/benchmarks/droMoj3.sample.txt
+    reason: Missing output files: output_files/samples/droMoj3_temp.fa; Params have changed since last execution
+    wildcards: sample=droMoj3
+    threads: 12
+    resources: tmpdir=/tmp
+
+[Sun Aug 24 20:55:50 2025]
+Finished job 16.
+7 of 776 steps (1%) done
+Select jobs to execute...
+
+[Sun Aug 24 20:55:50 2025]
+rule sequence_select:
+    input: /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droVir3.fa.gz
+    output: output_files/samples/droVir3_temp.fa
+    jobid: 15
+    benchmark: output_files/benchmarks/droVir3.sample.txt
+    reason: Missing output files: output_files/samples/droVir3_temp.fa; Params have changed since last execution
+    wildcards: sample=droVir3
+    threads: 12
+    resources: tmpdir=/tmp
+
+[Sun Aug 24 20:55:50 2025]
+Finished job 12.
+8 of 776 steps (1%) done
+[Sun Aug 24 20:55:50 2025]
+Finished job 13.
+9 of 776 steps (1%) done
+[Sun Aug 24 20:55:50 2025]
+Finished job 15.
+10 of 776 steps (1%) done
+[Sun Aug 24 20:55:51 2025]
+Finished job 17.
+11 of 776 steps (1%) done
+Select jobs to execute...
+
+[Sun Aug 24 20:55:51 2025]
+rule sequence_merge:
+    input: output_files/samples/dp4_temp.fa, output_files/samples/droGri2_temp.fa, output_files/samples/droSim1_temp.fa, output_files/samples/droEre2_temp.fa, output_files/samples/droWil1_temp.fa, output_files/samples/droMoj3_temp.fa, output_files/samples/droSec1_temp.fa, output_files/samples/droVir3_temp.fa, output_files/samples/droPer1_temp.fa, output_files/samples/droAna2_temp.fa, output_files/samples/droYak2_temp.fa
+    output: output_files/samples/out.fa, output_files/plots/sampling.png
+    jobid: 7
+    reason: Missing output files: output_files/samples/out.fa; Input files updated by another job: output_files/samples/droAna2_temp.fa, output_files/samples/droPer1_temp.fa, output_files/samples/droVir3_temp.fa, output_files/samples/droMoj3_temp.fa, output_files/samples/droGri2_temp.fa, output_files/samples/droEre2_temp.fa, output_files/samples/droYak2_temp.fa, output_files/samples/droSim1_temp.fa, output_files/samples/dp4_temp.fa, output_files/samples/droSec1_temp.fa, output_files/samples/droWil1_temp.fa
+    resources: tmpdir=/tmp
+
+[Sun Aug 24 20:55:54 2025]
+Finished job 7.
+12 of 776 steps (2%) done
+Select jobs to execute...
+
+[Sun Aug 24 20:55:54 2025]
+rule lastz:
+    input: output_files/samples/out.fa, /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droWil1.fa.gz
+    output: output_files/alignments/droWil1.maf
+    jobid: 22
+    benchmark: output_files/benchmarks/droWil1.lastz.txt
+    reason: Missing output files: output_files/alignments/droWil1.maf; Input files updated by another job: output_files/samples/out.fa
+    wildcards: sample=droWil1
+    threads: 12
+    resources: tmpdir=/tmp
+
+
+[Sun Aug 24 20:55:54 2025]
+rule lastz:
+    input: output_files/samples/out.fa, /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droMoj3.fa.gz
+    output: output_files/alignments/droMoj3.maf
+    jobid: 23
+    benchmark: output_files/benchmarks/droMoj3.lastz.txt
+    reason: Missing output files: output_files/alignments/droMoj3.maf; Input files updated by another job: output_files/samples/out.fa
+    wildcards: sample=droMoj3
+    threads: 12
+    resources: tmpdir=/tmp
+
+
+[Sun Aug 24 20:55:54 2025]
+rule lastz:
+    input: output_files/samples/out.fa, /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droVir3.fa.gz
+    output: output_files/alignments/droVir3.maf
+    jobid: 25
+    benchmark: output_files/benchmarks/droVir3.lastz.txt
+    reason: Missing output files: output_files/alignments/droVir3.maf; Input files updated by another job: output_files/samples/out.fa
+    wildcards: sample=droVir3
+    threads: 12
+    resources: tmpdir=/tmp
+
+
+[Sun Aug 24 20:55:54 2025]
+rule lastz:
+    input: output_files/samples/out.fa, /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/dp4.fa.gz
+    output: output_files/alignments/dp4.maf
+    jobid: 6
+    benchmark: output_files/benchmarks/dp4.lastz.txt
+    reason: Missing output files: output_files/alignments/dp4.maf; Input files updated by another job: output_files/samples/out.fa
+    wildcards: sample=dp4
+    threads: 12
+    resources: tmpdir=/tmp
+
+Terminating processes on user request, this might take some time.
+[Sun Aug 24 20:56:08 2025]
+Error in rule lastz:
+    jobid: 6
+    input: output_files/samples/out.fa, /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/dp4.fa.gz
+    output: output_files/alignments/dp4.maf
+    shell:
+        
+		if [[ "/home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/dp4.fa.gz" == *.gz ]]; then
+			if [[ "False" == "True" ]]; then
+				lastz_40 <(gunzip -dc /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/dp4.fa.gz)[multiple] output_files/samples/out.fa --coverage=85 --continuity=85 --filter=identity:40 --format=maf --output=output_files/alignments/dp4.maf --ambiguous=iupac --step=1 --queryhspbest=20 --scores=HOXD55.q
+			else
+				lastz_40 <(gunzip -dc /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/dp4.fa.gz)[multiple] output_files/samples/out.fa --coverage=85 --continuity=85 --filter=identity:65 --format=maf --output=output_files/alignments/dp4.maf --ambiguous=iupac --step=1 --queryhspbest=20
+			fi
+		else
+			if [[ "False" == "True" ]]; then
+				lastz_40 /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/dp4.fa.gz[multiple] output_files/samples/out.fa  --coverage=85 --continuity=85 --filter=identity:40 --format=maf --output=output_files/alignments/dp4.maf --ambiguous=iupac --step=1 --queryhspbest=20 --scores=HOXD55.q
+			else
+				lastz_40 /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/dp4.fa.gz[multiple] output_files/samples/out.fa  --coverage=85 --continuity=85 --filter=identity:65 --format=maf --output=output_files/alignments/dp4.maf --ambiguous=iupac --step=1 --queryhspbest=20 
+			fi
+		fi
+		
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Sun Aug 24 20:56:08 2025]
+Error in rule lastz:
+    jobid: 22
+    input: output_files/samples/out.fa, /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droWil1.fa.gz
+    output: output_files/alignments/droWil1.maf
+    shell:
+        
+		if [[ "/home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droWil1.fa.gz" == *.gz ]]; then
+			if [[ "False" == "True" ]]; then
+				lastz_40 <(gunzip -dc /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droWil1.fa.gz)[multiple] output_files/samples/out.fa --coverage=85 --continuity=85 --filter=identity:40 --format=maf --output=output_files/alignments/droWil1.maf --ambiguous=iupac --step=1 --queryhspbest=20 --scores=HOXD55.q
+			else
+				lastz_40 <(gunzip -dc /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droWil1.fa.gz)[multiple] output_files/samples/out.fa --coverage=85 --continuity=85 --filter=identity:65 --format=maf --output=output_files/alignments/droWil1.maf --ambiguous=iupac --step=1 --queryhspbest=20
+			fi
+		else
+			if [[ "False" == "True" ]]; then
+				lastz_40 /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droWil1.fa.gz[multiple] output_files/samples/out.fa  --coverage=85 --continuity=85 --filter=identity:40 --format=maf --output=output_files/alignments/droWil1.maf --ambiguous=iupac --step=1 --queryhspbest=20 --scores=HOXD55.q
+			else
+				lastz_40 /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droWil1.fa.gz[multiple] output_files/samples/out.fa  --coverage=85 --continuity=85 --filter=identity:65 --format=maf --output=output_files/alignments/droWil1.maf --ambiguous=iupac --step=1 --queryhspbest=20 
+			fi
+		fi
+		
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Sun Aug 24 20:56:08 2025]
+Error in rule lastz:
+    jobid: 25
+    input: output_files/samples/out.fa, /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droVir3.fa.gz
+    output: output_files/alignments/droVir3.maf
+    shell:
+        
+		if [[ "/home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droVir3.fa.gz" == *.gz ]]; then
+			if [[ "False" == "True" ]]; then
+				lastz_40 <(gunzip -dc /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droVir3.fa.gz)[multiple] output_files/samples/out.fa --coverage=85 --continuity=85 --filter=identity:40 --format=maf --output=output_files/alignments/droVir3.maf --ambiguous=iupac --step=1 --queryhspbest=20 --scores=HOXD55.q
+			else
+				lastz_40 <(gunzip -dc /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droVir3.fa.gz)[multiple] output_files/samples/out.fa --coverage=85 --continuity=85 --filter=identity:65 --format=maf --output=output_files/alignments/droVir3.maf --ambiguous=iupac --step=1 --queryhspbest=20
+			fi
+		else
+			if [[ "False" == "True" ]]; then
+				lastz_40 /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droVir3.fa.gz[multiple] output_files/samples/out.fa  --coverage=85 --continuity=85 --filter=identity:40 --format=maf --output=output_files/alignments/droVir3.maf --ambiguous=iupac --step=1 --queryhspbest=20 --scores=HOXD55.q
+			else
+				lastz_40 /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droVir3.fa.gz[multiple] output_files/samples/out.fa  --coverage=85 --continuity=85 --filter=identity:65 --format=maf --output=output_files/alignments/droVir3.maf --ambiguous=iupac --step=1 --queryhspbest=20 
+			fi
+		fi
+		
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Sun Aug 24 20:56:08 2025]
+Error in rule lastz:
+    jobid: 23
+    input: output_files/samples/out.fa, /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droMoj3.fa.gz
+    output: output_files/alignments/droMoj3.maf
+    shell:
+        
+		if [[ "/home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droMoj3.fa.gz" == *.gz ]]; then
+			if [[ "False" == "True" ]]; then
+				lastz_40 <(gunzip -dc /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droMoj3.fa.gz)[multiple] output_files/samples/out.fa --coverage=85 --continuity=85 --filter=identity:40 --format=maf --output=output_files/alignments/droMoj3.maf --ambiguous=iupac --step=1 --queryhspbest=20 --scores=HOXD55.q
+			else
+				lastz_40 <(gunzip -dc /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droMoj3.fa.gz)[multiple] output_files/samples/out.fa --coverage=85 --continuity=85 --filter=identity:65 --format=maf --output=output_files/alignments/droMoj3.maf --ambiguous=iupac --step=1 --queryhspbest=20
+			fi
+		else
+			if [[ "False" == "True" ]]; then
+				lastz_40 /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droMoj3.fa.gz[multiple] output_files/samples/out.fa  --coverage=85 --continuity=85 --filter=identity:40 --format=maf --output=output_files/alignments/droMoj3.maf --ambiguous=iupac --step=1 --queryhspbest=20 --scores=HOXD55.q
+			else
+				lastz_40 /home/jrusso@AD.UCSD.EDU/KegAlign/.conda/miniforge3/envs/roadies_env/ROADIES/test/test_data/droMoj3.fa.gz[multiple] output_files/samples/out.fa  --coverage=85 --continuity=85 --filter=identity:65 --format=maf --output=output_files/alignments/droMoj3.maf --ambiguous=iupac --step=1 --queryhspbest=20 
+			fi
+		fi
+		
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: .snakemake/log/2025-08-24T205546.981048.snakemake.log

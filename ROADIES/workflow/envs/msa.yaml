@@ -1,0 +1,6 @@
+name: pasta
+channels:
+  - bioconda
+dependencies:
+  - python=2.7
+  - dendropy=4.5.2

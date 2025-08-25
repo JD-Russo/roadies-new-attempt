@@ -1,0 +1,5 @@
+Config file config/config.yaml is extended by additional config specified via the command line.
+FileNotFoundError in file /home/jrusso@AD.UCSD.EDU/roadies/ROADIES/workflow/rules/sampling.smk, line 13:
+[Errno 2] No such file or directory: 'group_file.csv'
+  File "/home/jrusso@AD.UCSD.EDU/roadies/ROADIES/workflow/Snakefile", line 30, in <module>
+  File "/home/jrusso@AD.UCSD.EDU/roadies/ROADIES/workflow/rules/sampling.smk", line 13, in <module>
