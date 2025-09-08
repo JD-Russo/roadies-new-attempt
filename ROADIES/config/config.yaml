@@ -2,7 +2,7 @@ ALL_OUT_DIR: converge_files
 CONTINUITY: 85
 COVERAGE: 85
 FILTERFRAGMENTS: 0.5
-GENE_COUNT: 2000
+GENE_COUNT: 250
 GENOMES: /data/jrusso/roadies-datasets/gzipped_flies
 GROUP_CSV: group_file.csv
 IDENTITY: 65
