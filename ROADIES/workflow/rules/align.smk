@@ -12,73 +12,32 @@ rule lastz:
 		config["OUT_DIR"]+"/benchmarks/{sample}.lastz.txt"
 	threads: lambda wildcards: int(config['num_threads'])
 	params:
-#		species = "{sample}",
-#		identity = config['IDENTITY'],
-#		identity_deep = config['IDENTITY_DEEP'],
-#		coverage = config['COVERAGE'],
-#		continuity = config['CONTINUITY'],
+		species = "{sample}",
+		identity = config['IDENTITY'],
+		identity_deep = config['IDENTITY_DEEP'],
+		coverage = config['COVERAGE'],
+		continuity = config['CONTINUITY'],
 		align_dir = config['OUT_DIR']+ "/alignments",
-#		max_dup = 2*int(config['MAX_DUP']),
+		max_dup = 2*int(config['MAX_DUP']),
 		steps = config["STEPS"],
-#		deep_mode = str(deep_mode),
-#		scores = config['SCORES'],
-#		num_gpu = config.get("NUM_GPU", 1),
-#        num_threads = config['num_threads']
-	conda:
-		"../envs/kegalign.yaml"
+		deep_mode = str(deep_mode),
+		scores = config['SCORES']
 	shell:
 		'''
-		tool_dir=$CONDA_DEFAULT_ENV/bin
-        sample_workdir={params.align_dir}/{wildcards.sample}
-		mkdir -p $sample_workdir
-        cd $sample_workdir
-        mkdir -p work
-        cd work
-
-		faToTwoBit <(gzip -cdfq {input.genome}) ref.2bit
-        faToTwoBit <(gzip -cdfq {input.genes}) query.2bit
-
-        cd ..
-
-		python $tool_dir/runner.py \
-            --diagonal-partition \
-            --format maf- \
-            --num-cpu {threads} \
-            --output-file data_package.tgz \
-            --output-type tarball \
-            --tool_directory $tool_dir \
-			--hspthresh 3000 --gappedthresh 3000 --xdrop 910 --ydrop 9400 --ambiguous iupac --step {params.steps} \
-            {input.genome} {input.genes}
-
-        python $tool_dir/package_output.py \
-            --format_selector maf \
-            --tool_directory $tool_dir 
-
-        python $tool_dir/run_lastz_tarball.py \
-            --input=data_package.tgz \
-            --output={wildcards.sample}.maf \
-            --parallel={threads}
-
-		python ../../../workflow/scripts/filter_alignment.py --input {wildcards.sample}.maf --output filtered.maf --threads {threads}
-		
-		python ../../../workflow/scripts/maf_filter_queryhspbest.py filtered.maf --output {output} 
-		rm filtered.maf
+		if [[ "{input.genome}" == *.gz ]]; then
+			if [[ "{params.deep_mode}" == "True" ]]; then
+				lastz_40 <(gunzip -dc {input.genome})[multiple] {input.genes} --coverage={params.coverage} --continuity={params.continuity} --filter=identity:{params.identity_deep} --format=maf --output={output} --ambiguous=iupac --step={params.steps} --queryhspbest={params.max_dup} --scores={params.scores}
+			else
+				lastz_40 <(gunzip -dc {input.genome})[multiple] {input.genes} --coverage={params.coverage} --continuity={params.continuity} --filter=identity:{params.identity} --format=maf --output={output} --ambiguous=iupac --step={params.steps} --queryhspbest={params.max_dup}
+			fi
+		else
+			if [[ "{params.deep_mode}" == "True" ]]; then
+				lastz_40 {input.genome}[multiple] {input.genes}  --coverage={params.coverage} --continuity={params.continuity} --filter=identity:{params.identity_deep} --format=maf --output={output} --ambiguous=iupac --step={params.steps} --queryhspbest={params.max_dup} --scores={params.scores}
+			else
+				lastz_40 {input.genome}[multiple] {input.genes}  --coverage={params.coverage} --continuity={params.continuity} --filter=identity:{params.identity} --format=maf --output={output} --ambiguous=iupac --step={params.steps} --queryhspbest={params.max_dup} 
+			fi
+		fi
 		'''
-		#rm {wildcards.sample}.maf
-#		if [[ "{input.genome}" == *.gz ]]; then
-#			if [[ "{params.deep_mode}" == "True" ]]; then
-#				lastz_40 <(gunzip -dc {input.genome})[multiple] {input.genes} --coverage={params.coverage} --continuity={params.continuity} --filter=identity:{params.identity_deep} --format=maf --output={output} --ambiguous=iupac --step={params.steps} --queryhspbest={params.max_dup} --scores={params.scores}
-#			else
-#				lastz_40 <(gunzip -dc {input.genome})[multiple] {input.genes} --coverage={params.coverage} --continuity={params.continuity} --filter=identity:{params.identity} --format=maf --output={output} --ambiguous=iupac --step={params.steps} --queryhspbest={params.max_dup}
-#			fi
-#		else
-#			if [[ "{params.deep_mode}" == "True" ]]; then
-#				lastz_40 {input.genome}[multiple] {input.genes}  --coverage={params.coverage} --continuity={params.continuity} --filter=identity:{params.identity_deep} --format=maf --output={output} --ambiguous=iupac --step={params.steps} --queryhspbest={params.max_dup} --scores={params.scores}
-#			else
-#				lastz_40 {input.genome}[multiple] {input.genes}  --coverage={params.coverage} --continuity={params.continuity} --filter=identity:{params.identity} --format=maf --output={output} --ambiguous=iupac --step={params.steps} --queryhspbest={params.max_dup} 
-#			fi
-#		fi
-#		'''
 
 rule lastz2fasta:
 	input:
@@ -117,6 +76,8 @@ rule pasta:
 	benchmark:
 		config["OUT_DIR"]+"/benchmarks/{id}.pasta.txt"
 	threads: lambda wildcards: int(config['num_threads'])
+	conda: 
+		"../envs/msa.yaml"
 	shell:
 		'''
 		if [[ `grep -n '>' {input} | wc -l` -gt {params.m} ]] || [[ `awk 'BEGIN{{l=0;n=0;st=0}}{{if (substr($0,1,1) == ">") {{st=1}} else {{st=2}}; if(st==1) {{n+=1}} else if(st==2) {{l+=length($0)}}}} END{{if (n>0) {{print int((l+n-1)/n)}} else {{print 0}} }}' {input}` -gt {params.max_len} ]]
@@ -156,6 +117,8 @@ rule filtermsa:
 	params:
 		m = config["FILTERFRAGMENTS"],
 		n = config["MASKSITES"],
+	conda:
+		"../envs/filtermsa.yaml"
 	shell:
 		'''
 		python pasta/run_seqtools.py -masksitesp {params.n} -filterfragmentsp {params.m} -infile {input} -outfile {output}

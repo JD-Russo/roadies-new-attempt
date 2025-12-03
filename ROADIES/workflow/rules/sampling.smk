@@ -5,11 +5,14 @@ from pathlib import Path
 import subprocess
 
 num_species = len(os.listdir(config["GENOMES"]))
-od = OrderedDict([(key,0) for key in SAMPLES])
 num_genomes = len(SAMPLES)
-for i in range(num):
-	index = random.randint(0,num_genomes-1)
-	od[SAMPLES[index]] = od[SAMPLES[index]]+1
+
+od = OrderedDict([(key, 1) for key in SAMPLES])
+
+remaining = num - num_genomes
+for _ in range(remaining):
+    index = random.randint(0, num_genomes - 1)
+    od[SAMPLES[index]] += 1
 temInt=1
 
 od_e = OrderedDict([(key,0) for key in SAMPLES])

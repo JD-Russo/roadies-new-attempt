@@ -13,39 +13,54 @@ rule lastz:
     threads: lambda wildcards: int(48)
     params:
         align_dir = config["OUT_DIR"] + "/alignments",
+        tool_dir = "/home/ang037@AD.UCSD.EDU/.conda/envs/roadies_env/ROADIES/KegAlign/scripts",
         num_gpu = config.get("NUM_GPU", 1)
     conda:
         "../envs/kegalign.yaml"
     shell:
         """
-		scripts_dir=$PWD/workflow/scripts
+		exec > >(tee {wildcards.sample}_timing.log) 2>&1
         sample_workdir={params.align_dir}/{wildcards.sample}
         mkdir -p $sample_workdir
         cd $sample_workdir
         mkdir -p work
         cd work
 
-        faToTwoBit <(gzip -cdfq {input.genome}) ref.2bit
-        faToTwoBit <(gzip -cdfq {input.genes}) query.2bit
+        /usr/bin/time faToTwoBit <(gzip -cdfq {input.genome}) ref.2bit
+        /usr/bin/time faToTwoBit <(gzip -cdfq {input.genes}) query.2bit
 
         cd ..
 
-		--hspthresh 3000 --gappedthresh 3000 --xdrop 910 --ydrop 9400 --ambiguous iupac > lastz-commands.txt
-        kegalign {input.genome} {input.genes} work/ \
-			--num_gpu {params.num_gpu} \
-			--num_threads {threads} \
-			--hspthresh 3000 --gappedthresh 3000 --xdrop 910 --ydrop 9400 --ambiguous iupac \
-			> lastz-commands.txt
+        /usr/bin/time -v python {params.tool_dir}/runner.py \
+            --diagonal-partition \
+            --format maf- \
+            --num-cpu {threads} \
+            --num-gpu {params.num_gpu} \
+            --output-file data_package.tgz \
+            --output-type tarball \
+            --tool_directory {params.tool_dir} \
+            {input.genome} {input.genes}
 
-		parallel --will-cite -j{threads} -k --pipe -d '\n' python $scripts_dir/dp_shim.py < lastz-commands.txt > new-lastz-commands.txt
+        /usr/bin/time -v python {params.tool_dir}/package_output.py \
+            --format_selector maf \
+            --tool_directory {params.tool_dir}
 
-		awk '{{print $0, "--coverage=85 --continuity=85 --filter=identity:65 --ambiguous=iupac --step=1 --queryhspbest=10"}}' new-lastz-commands.txt | parallel --max-procs {threads}
+        /usr/bin/time -v python {params.tool_dir}/run_lastz_tarball.py \
+            --input=data_package.tgz \
+            --output={wildcards.sample}.maf \
+            --parallel={threads}
+
+        /usr/bin/time -v kegalign {input.genome} {input.genes} work/ \
+            --num_gpu {params.num_gpu} \
+            --num_threads {threads} > {wildcards.sample}_lastz-commands.txt
+
+		/usr/bin/time -v awk '{{print $0, "--coverage=85 --continuity=85 --filter=identity:65 --ambiguous=iupac --step=1 --queryhspbest=10"}}' {wildcards.sample}_lastz-commands.txt | parallel --max-procs {threads}
 
         (echo "##maf version=1"; cat *.maf-) > {output.maf}
 
 		rm -rf "$sample_workdir"
         """
-# notes: the awk line above hardcodes coverage, continuity, identity, step, and queryhspbest values; proably should be parameters
+
 rule lastz2fasta:
 	input:
 		expand(config["OUT_DIR"]+"/alignments/{sample}.maf",sample=SAMPLES)   
@@ -127,3 +142,4 @@ rule filtermsa:
 		python pasta/run_seqtools.py -masksitesp {params.n} -filterfragmentsp {params.m} -infile {input} -outfile {output}
 			
 		'''
+		

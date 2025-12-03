@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/opt/conda/conda-bld/roadies_1744817160316/work/workflow/scripts/sampling/build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
